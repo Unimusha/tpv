@@ -1,6 +1,7 @@
 package com.tpv.dto;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,35 +33,39 @@ public class ComandaDTO implements Serializable {
 	private static final long serialVersionUID = -6177318315824995353L;
 
 	@ApiModelProperty(required = false, position = 1, value = "99999")
-	@JsonProperty("idComanda")
+	@JsonProperty("id_comanda")
 	private Long idComanda;
 
 	@ApiModelProperty(required = true, position = 2, value = "99999")
-	@JsonProperty("idMesa")
+	@JsonProperty("id_mesa")
 	private Long idMesa;
 
 	@ApiModelProperty(required = false, position = 3, value = "false")
-	@JsonProperty("completadoBarra")
+	@JsonProperty("completado_barra")
 	private Boolean completadoBarra;
 
 	@ApiModelProperty(required = false, position = 4, value = "false")
-	@JsonProperty("completadoCocina")
+	@JsonProperty("completado_cocina")
 	private Boolean completadoCocina;
 
 	@ApiModelProperty(required = false, position = 5, value = "false")
 	@JsonProperty("pagado")
 	private Boolean pagado;
 
-	@ApiModelProperty(required = false, position = 6)
+	@ApiModelProperty(required = false, position = 6, value = "00:00:00")
+	@JsonProperty("hora_creacion_comanda")
+	private Time hora_creacion_comanda;
+
+	@ApiModelProperty(required = false, position = 7)
 	@JsonProperty("borrado")
 	private Boolean borrado;
 
-	@ApiModelProperty(required = false, position = 7)
+	@ApiModelProperty(required = false, position = 8)
 	@JsonProperty("mesas")
 	@JsonBackReference
 	private MesaDTO mesas;
 
-	@ApiModelProperty(required = false, position = 8)
+	@ApiModelProperty(required = false, position = 9)
 	@JsonProperty("comandasProductos")
 	@JsonManagedReference
 	@EqualsAndHashCode.Exclude

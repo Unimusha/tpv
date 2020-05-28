@@ -40,6 +40,28 @@ public class ComandaProductoServiceImpl implements ComandaProductoService {
 	}
 
 	@Override
+	public List<ComandaProductoDTO> saveList(List<ComandaProductoDTO> listaComandaProductoDto) throws ParseException {
+
+		List<ComandaProducto> listaComandaProducto;
+
+		listaComandaProducto = listaComandaProductoDto.stream().map(t -> {
+			try {
+				return convertirToEntidad(t);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}).collect(Collectors.toList());
+
+		listaComandaProducto = comandaProductoRepository.saveAll(listaComandaProducto);
+
+		listaComandaProductoDto = listaComandaProducto.stream().map(this::convertirToDto).collect(Collectors.toList());
+
+		return listaComandaProductoDto;
+	}
+
+	@Override
 	public ComandaProductoDTO update(Long id, ComandaProductoDTO comandaProductoDto) {
 		ComandaProducto comandaProductoToUpdate = comandaProductoRepository.findById(id).get();
 		if (comandaProductoDto.getIdComanda() != null) {
@@ -50,6 +72,9 @@ public class ComandaProductoServiceImpl implements ComandaProductoService {
 		}
 		if (comandaProductoDto.getUnidadesProducto() != null) {
 			comandaProductoToUpdate.setUnidadesProducto(comandaProductoDto.getUnidadesProducto());
+		}
+		if (comandaProductoDto.getComentario() != null) {
+			comandaProductoToUpdate.setComentario(comandaProductoDto.getComentario());
 		}
 
 		return convertirToDto(comandaProductoRepository.save(comandaProductoToUpdate));

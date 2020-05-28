@@ -19,4 +19,6 @@ public interface MesaService {
 
 //	public abstract MesaDTO borrado(Long id);
 
+//	public abstract List<MesaDTO> findAllProbando();
+
 }

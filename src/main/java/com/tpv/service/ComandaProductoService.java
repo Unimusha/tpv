@@ -13,6 +13,9 @@ public interface ComandaProductoService {
 
 	public abstract ComandaProductoDTO save(ComandaProductoDTO comandaProductoDto) throws ParseException;
 
+	public abstract List<ComandaProductoDTO> saveList(List<ComandaProductoDTO> listaComandaProductoDto)
+			throws ParseException;
+
 	public abstract ComandaProductoDTO update(Long id, ComandaProductoDTO comandaProductoDto);
 
 	public abstract void deleteById(Long id);

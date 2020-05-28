@@ -47,6 +47,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (usuarioDto.getNombre() != null) {
 			usuarioToUpdate.setNombre(usuarioDto.getNombre());
 		}
+		if (usuarioDto.getApellidos() != null) {
+			usuarioToUpdate.setApellidos(usuarioDto.getApellidos());
+		}
+		if (usuarioDto.getEmail() != null) {
+			usuarioToUpdate.setEmail(usuarioDto.getEmail());
+		}
 		if (usuarioDto.getContrasenia() != null) {
 			usuarioToUpdate.setContrasenia(encriptarContrasenia(usuarioDto.getContrasenia()));
 		}
@@ -74,12 +80,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (usuarioToCheck != null) {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			if (passwordEncoder.matches(usuarioDto.getContrasenia(), usuarioToCheck.getContrasenia())) {
-				return "Contraseña aceptada";
+				return "true";
 			} else {
-				return "Contraseña erronea";
+				return "false";
 			}
 		} else {
-			return "Usuario no encontrado";
+			return "false";
 		}
 	}
 

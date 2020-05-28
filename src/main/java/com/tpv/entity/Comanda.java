@@ -1,6 +1,7 @@
 package com.tpv.entity;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -57,6 +59,10 @@ public class Comanda implements Serializable {
 
 	@Column(name = "pagado")
 	private Boolean pagado;
+
+	@Column(name = "hora_creacion_comanda", nullable = false, updatable = false)
+	@CreationTimestamp
+	private Time hora_creacion_comanda;
 
 	@Column(name = "borrado")
 	private Boolean borrado;

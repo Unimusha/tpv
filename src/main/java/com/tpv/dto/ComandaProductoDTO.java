@@ -23,31 +23,35 @@ public class ComandaProductoDTO implements Serializable {
 	private static final long serialVersionUID = -7243010060110977216L;
 
 	@ApiModelProperty(required = false, position = 1, value = "99999")
-	@JsonProperty("idComandaProducto")
+	@JsonProperty("id_comanda_producto")
 	private Long idComandaProducto;
 
 	@ApiModelProperty(required = true, position = 2, value = "99999")
-	@JsonProperty("idComanda")
+	@JsonProperty("id_comanda")
 	private Long idComanda;
 
 	@ApiModelProperty(required = true, position = 3, value = "99999")
-	@JsonProperty("idProducto")
+	@JsonProperty("id_producto")
 	private Long idProducto;
 
 	@ApiModelProperty(required = true, position = 4, value = "0")
-	@JsonProperty("unidadesProducto")
+	@JsonProperty("unidades_producto")
 	private Long unidadesProducto;
 
-	@ApiModelProperty(required = false, position = 5)
+	@ApiModelProperty(required = true, position = 5, value = "Comentario sobre el producto")
+	@JsonProperty("comentario")
+	private String comentario;
+
+	@ApiModelProperty(required = false, position = 6)
 	@JsonProperty("borrado")
 	private Boolean borrado;
 
-	@ApiModelProperty(required = false, position = 6)
+	@ApiModelProperty(required = false, position = 7)
 	@JsonProperty("comandas")
 	@JsonBackReference
 	private ComandaDTO comandas;
 
-	@ApiModelProperty(required = false, position = 7)
+	@ApiModelProperty(required = false, position = 8)
 	@JsonProperty("producto")
 	private ProductoDTO producto;
 

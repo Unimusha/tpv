@@ -48,6 +48,13 @@ public class Usuario implements Serializable {
 	@Column(name = "nombre", nullable = false, unique = true)
 	private String nombre;
 
+	@Column(name = "apellidos", nullable = false)
+
+	private String apellidos;
+
+	@Column(name = "email", nullable = false)
+	private String email;
+
 	@Column(name = "contrasenia", nullable = false)
 	private String contrasenia;
 

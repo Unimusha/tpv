@@ -54,6 +54,9 @@ public class ComandaServiceImpl implements ComandaService {
 		if (comandaDto.getPagado() != null) {
 			comandaToUpdate.setPagado(comandaDto.getPagado());
 		}
+		if (comandaDto.getHora_creacion_comanda() != null) {
+			comandaToUpdate.setHora_creacion_comanda(comandaDto.getHora_creacion_comanda());
+		}
 
 		return convertirToDto(comandaRepository.save(comandaToUpdate));
 	}

@@ -32,26 +32,34 @@ public class UsuarioDTO implements Serializable {
 	private static final long serialVersionUID = 1811780179407257852L;
 
 	@ApiModelProperty(required = false, position = 1, value = "99999")
-	@JsonProperty("idUsuario")
+	@JsonProperty("id_usuario")
 	private Long idUsuario;
 
 	@ApiModelProperty(required = true, position = 2, example = "nombreDeEjemplo")
 	@JsonProperty("nombre")
 	private String nombre;
 
-	@ApiModelProperty(required = true, position = 3, example = "contraseniaDeEjemplo")
+	@ApiModelProperty(required = true, position = 3, example = "apellidoDeEjemplo")
+	@JsonProperty("apellidos")
+	private String apellidos;
+
+	@ApiModelProperty(required = true, position = 4, example = "email@gmail.com")
+	@JsonProperty("email")
+	private String email;
+
+	@ApiModelProperty(required = true, position = 5, example = "contraseniaDeEjemplo")
 	@JsonProperty("contrasenia")
 	private String contrasenia;
 
-	@ApiModelProperty(required = true, position = 4, example = "Jefe=0, Camarero=1, Barman=2, Cocinero=3")
+	@ApiModelProperty(required = true, position = 6, example = "Jefe=0, Camarero=1, Barman=2, Cocinero=3")
 	@JsonProperty("rango")
 	private Integer rango;
 
-	@ApiModelProperty(required = false, position = 5)
+	@ApiModelProperty(required = false, position = 7)
 	@JsonProperty("borrado")
 	private Boolean borrado;
 
-	@ApiModelProperty(required = false, position = 6)
+	@ApiModelProperty(required = false, position = 8)
 	@JsonProperty("mesas")
 	@JsonManagedReference
 	@EqualsAndHashCode.Exclude

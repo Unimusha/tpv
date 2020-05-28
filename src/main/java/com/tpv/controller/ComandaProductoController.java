@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("api/comandasProductos")
+@CrossOrigin(origins = "*")
 
 public class ComandaProductoController {
 
@@ -35,11 +37,18 @@ public class ComandaProductoController {
 		return ResponseEntity.ok(comandaProductoService.findAll());
 	}
 
-	@ApiOperation(value = "Crea una comandaProducto dando un array, Req.Mínimo: 'id_comanda', 'id_producto' y 'unidades_producto'")
+//	@ApiOperation(value = "Crea una comandaProducto dando un array, Req.Mínimo: 'id_comanda', 'id_producto' y 'unidades_producto'")
+//	@PostMapping
+//	public ResponseEntity<ComandaProductoDTO> create(@Valid @RequestBody ComandaProductoDTO comandaProductoDto)
+//			throws ParseException {
+//		return ResponseEntity.ok(comandaProductoService.save(comandaProductoDto));
+//	}
+
+	@ApiOperation(value = "Crea un lista de comandaProducto dando un array, Req.Mínimo: 'id_comanda', 'id_producto' y 'unidades_producto'")
 	@PostMapping
-	public ResponseEntity<ComandaProductoDTO> create(@Valid @RequestBody ComandaProductoDTO comandaProductoDto)
-			throws ParseException {
-		return ResponseEntity.ok(comandaProductoService.save(comandaProductoDto));
+	public ResponseEntity<List<ComandaProductoDTO>> createList(
+			@Valid @RequestBody List<ComandaProductoDTO> listaComandaProductoDto) throws ParseException {
+		return ResponseEntity.ok(comandaProductoService.saveList(listaComandaProductoDto));
 	}
 
 	@ApiOperation(value = "Busca una comandaProducto")
@@ -48,7 +57,7 @@ public class ComandaProductoController {
 		return ResponseEntity.ok(comandaProductoService.findById(id));
 	}
 
-	@ApiOperation(value = "Edita una comandaProducto dando un array, Opciones: 'id_comanda' o 'id_producto' o 'unidades_producto'")
+	@ApiOperation(value = "Edita una comandaProducto dando un array, Opciones: 'id_comanda' o 'id_producto' o 'unidades_producto' o 'comentario'")
 	@PutMapping("/{id}")
 	public ResponseEntity<ComandaProductoDTO> update(@PathVariable Long id,
 			@Valid @RequestBody ComandaProductoDTO comandaProductoDto) throws ParseException {

@@ -11,6 +11,6 @@ import com.tpv.entity.Comanda;
 public interface ComandaRepository extends JpaRepository<Comanda, Long> {
 	List<Comanda> findBycompletadoBarraFalseAndPagadoFalseAndBorradoFalse();
 
-	List<Comanda> findBycompletadoCocinaFalseAndPagadoFalseAndBorradoFalse();
+	List<Comanda> findByPagadoFalse();
 
 }

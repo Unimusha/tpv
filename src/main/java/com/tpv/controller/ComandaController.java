@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,6 +25,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("api/comandas")
+@CrossOrigin(origins = "*")
 
 public class ComandaController {
 
@@ -36,7 +38,7 @@ public class ComandaController {
 		return ResponseEntity.ok(comandaService.findAll());
 	}
 
-	@ApiOperation(value = "Crea una comanda dando un array, Req.Mínimo: 'id_mesa'")
+	@ApiOperation(value = "Crea una comanda dando un array, Req.Mínimo: 'id_mesa' y 'hora_creacion_comanda'")
 	@PostMapping
 	public ResponseEntity<ComandaDTO> create(@Valid @RequestBody ComandaDTO comandaDto) throws ParseException {
 		return ResponseEntity.ok(comandaService.save(comandaDto));
@@ -48,7 +50,7 @@ public class ComandaController {
 		return ResponseEntity.ok(comandaService.findById(id));
 	}
 
-	@ApiOperation(value = "Edita una comanda dando un array, Opciones: 'id_mesa' o 'completado_barra' o 'completado_cocina' o 'pagado'")
+	@ApiOperation(value = "Edita una comanda dando un array, Opciones: 'id_mesa' o 'completado_barra' o 'completado_cocina' o 'pagado' o 'hora_creacion_comanda'")
 	@PutMapping("/{id}")
 	public ResponseEntity<ComandaDTO> update(@PathVariable Long id, @Valid @RequestBody ComandaDTO comandaDto)
 			throws ParseException {
@@ -77,14 +79,13 @@ public class ComandaController {
 	@ApiOperation(value = "Cambia a true el estado de 'completado_cocina' de una comanda")
 	@PatchMapping("/completadoCocina/{id}")
 	public ResponseEntity<ComandaDTO> completadoCocina(@PathVariable Long id) {
-
-		return ResponseEntity.ok(comandaService.completadoBarra(id));
+		return ResponseEntity.ok(comandaService.completadoCocina(id));
 	}
 
 	@ApiOperation(value = "Cambia a true el estado de 'pagado' de una comanda")
 	@PatchMapping("/pagado/{id}")
 	public ResponseEntity<ComandaDTO> pagado(@PathVariable Long id) {
-		return ResponseEntity.ok(comandaService.completadoBarra(id));
+		return ResponseEntity.ok(comandaService.pagado(id));
 	}
 
 }

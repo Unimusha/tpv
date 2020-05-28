@@ -46,6 +46,9 @@ public class ComandaProducto implements Serializable {
 	@Column(name = "unidades_producto", nullable = false)
 	private Long unidadesProducto;
 
+	@Column(name = "comentario", nullable = false)
+	private String comentario;
+
 	@Column(name = "borrado")
 	private Boolean borrado;
 

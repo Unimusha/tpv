@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(description = "Este modelo representa a los Productos")
+
 public class ProductoDTO implements Serializable {
 
 	/**
@@ -23,11 +24,11 @@ public class ProductoDTO implements Serializable {
 	private static final long serialVersionUID = -7897657943315465623L;
 
 	@ApiModelProperty(required = false, position = 1, value = "99999")
-	@JsonProperty("idProducto")
+	@JsonProperty("id_producto")
 	private Long idProducto;
 
 	@ApiModelProperty(required = true, position = 2, value = "99999")
-	@JsonProperty("idCategoria")
+	@JsonProperty("id_categoria")
 	private Long idCategoria;
 
 	@ApiModelProperty(required = true, position = 3, value = "99999")

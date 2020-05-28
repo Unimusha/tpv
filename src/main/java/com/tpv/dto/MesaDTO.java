@@ -32,19 +32,19 @@ public class MesaDTO implements Serializable {
 	private static final long serialVersionUID = -8152966682787574768L;
 
 	@ApiModelProperty(required = false, position = 1, value = "99999")
-	@JsonProperty("idMesa")
+	@JsonProperty("id_mesa")
 	private Long idMesa;
 
 	@ApiModelProperty(required = true, position = 2, value = "99999")
-	@JsonProperty("idUsuario")
+	@JsonProperty("id_usuario")
 	private Long idUsuario;
 
 	@ApiModelProperty(required = true, position = 3, value = "99999")
-	@JsonProperty("numeroMesa")
+	@JsonProperty("numero_mesa")
 	private Long numeroMesa;
 
 	@ApiModelProperty(required = true, position = 4, value = "0")
-	@JsonProperty("numeroPersonas")
+	@JsonProperty("numero_personas")
 	private Long numeroPersonas;
 
 	@ApiModelProperty(required = false, position = 5)

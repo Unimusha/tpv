@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,7 +24,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("api/usuarios")
-
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
 	@Autowired
@@ -35,7 +36,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioService.findAll());
 	}
 
-	@ApiOperation(value = "Crea un usuario dando un array, Req.Mínimo: 'nombre', 'contrasenia' y 'rango'")
+	@ApiOperation(value = "Crea un usuario dando un array, Req.Mínimo: 'nombre', 'apellidos', 'email', 'contrasenia' y 'rango'")
 	@PostMapping
 	public ResponseEntity<UsuarioDTO> create(@Valid @RequestBody UsuarioDTO usuarioDto) throws ParseException {
 		return ResponseEntity.ok(usuarioService.save(usuarioDto));
@@ -47,7 +48,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioService.findById(id));
 	}
 
-	@ApiOperation(value = "Edita un usuario dando un array. Opciones: 'nombre' o 'contrasenia' o 'rango'")
+	@ApiOperation(value = "Edita un usuario dando un array. Opciones: 'nombre' o 'apellidos' o 'email' o 'contrasenia' o 'rango'")
 	@PatchMapping("/{id}")
 	public ResponseEntity<UsuarioDTO> update(@PathVariable Long id, @Valid @RequestBody UsuarioDTO usuarioDto) {
 		return ResponseEntity.ok(usuarioService.update(id, usuarioDto));

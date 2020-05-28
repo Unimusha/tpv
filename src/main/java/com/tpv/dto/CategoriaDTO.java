@@ -29,7 +29,7 @@ public class CategoriaDTO implements Serializable {
 	private static final long serialVersionUID = 3759160293317794376L;
 
 	@ApiModelProperty(required = false, position = 1, value = "99999")
-	@JsonProperty("idCategoria")
+	@JsonProperty("id_categoria")
 	private Long idCategoria;
 
 	@ApiModelProperty(required = true, position = 2, value = "nombreDeCategoria")
