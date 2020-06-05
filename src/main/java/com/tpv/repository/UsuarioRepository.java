@@ -7,5 +7,7 @@ import com.tpv.entity.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-	 Usuario findByNombre(String nombre);
+	Usuario findByNombre(String nombre);
+
+	Usuario findByApellidos(String apellidos);
 }
